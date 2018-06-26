@@ -1,14 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Para tu gusto...
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  
+  <ion-list *ngFor="let platillo of platillos | async">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src={{platillo.img}}>
+      </ion-thumbnail>
+      <h2>{{platillo.nombre}}</h2>
+      <p>{{platillo.tipo}}</p>
+      <button ion-button clear item-end>Ver</button>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

@@ -6,9 +6,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+//Plug-ins AngularFire 02
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+//API Firestore
 import { environment } from '../environments/environment';
 
-import { AngularFireModule } from 'angularfire2';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,8 @@ import { AngularFireModule } from 'angularfire2';
   ],
   imports: [
     BrowserModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase)
   ],
