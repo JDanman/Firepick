@@ -6,7 +6,8 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 //Modelos de Datos Internos
-import { Platillo } from '../../commons/platillo'
+import { Platillo } from '../../commons/platillo';
+import { BebidasPage } from '../bebidas/bebidas';
 
 @Component({
   selector: 'page-home',
@@ -19,7 +20,9 @@ export class HomePage {
   platillos: Observable<Platillo[]>;
 
   constructor(
-    private readonly afs: AngularFirestore) {
+    private readonly afs: AngularFirestore,
+    private navCTRL: NavController
+  ) {
 
     //Acceso a los Datos en Firebase
     this.itemsCollection = afs.collection<Platillo>('platillo');
@@ -31,6 +34,10 @@ export class HomePage {
         return { id, ...data };
       }))
     );
+  }
+
+  verBebidas(){
+    this.navCTRL.push(BebidasPage);
   }
 
 }
