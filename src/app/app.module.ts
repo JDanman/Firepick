@@ -7,19 +7,25 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BebidasPage } from '../pages/bebidas/bebidas';
+import { AgregarPage } from '../pages/agregar/agregar';
 //Plug-ins AngularFire 02
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 //API Firestore
 import { environment } from '../environments/environment';
+//Cámara
+import { Camera } from '@ionic-native/camera';
+//ImagePicker
+import { ImagePicker } from '@ionic-native/image-picker';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    BebidasPage
+    BebidasPage,
+    AgregarPage
   ],
   imports: [
     BrowserModule,
@@ -32,11 +38,14 @@ import { environment } from '../environments/environment';
   entryComponents: [
     MyApp,
     HomePage,
-    BebidasPage
+    BebidasPage,
+    AgregarPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
+    ImagePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

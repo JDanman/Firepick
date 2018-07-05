@@ -1,6 +1,6 @@
 //Plug-ins por defecto
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 //Plug-ins adicionales
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 //Modelos de Datos Internos
 import { Platillo } from '../../commons/platillo';
 import { BebidasPage } from '../bebidas/bebidas';
+import { AgregarPage } from '../agregar/agregar';
 
 @Component({
   selector: 'page-home',
@@ -21,7 +22,8 @@ export class HomePage {
 
   constructor(
     private readonly afs: AngularFirestore,
-    private navCTRL: NavController
+    private navCTRL: NavController,
+    private modalCtrl: ModalController
   ) {
 
     //Acceso a los Datos en Firebase
@@ -38,6 +40,11 @@ export class HomePage {
 
   verBebidas(){
     this.navCTRL.push(BebidasPage);
+  }
+
+  agregarPlatillo(){
+    let agregarModal = this.modalCtrl.create(AgregarPage);
+   agregarModal.present();
   }
 
 }

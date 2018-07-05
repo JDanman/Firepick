@@ -1,0 +1,79 @@
+<!--
+  Generated template for the AgregarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Algo Nuevo</ion-title>
+
+    <ion-buttons left>
+      <button ion-button icon-only (click)="viewCtrl.dismiss()" class="retorno">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed color="secondary">Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre" type="text" placeholder="del platillo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed color="secondary">Tipo</ion-label>
+      <ion-input [(ngModel)]="tipo" type="text" placeholder="Sabor"></ion-input>
+    </ion-item>
+
+    <!--
+    <ion-item>
+      <ion-label fixed color="secondary">Imagen</ion-label>
+      <ion-input [(ngModel)]="img" type="text" placeholder="URL"></ion-input>
+    </ion-item>
+    -->
+
+    <ion-item *ngIf="imagePreview">
+      <img [src]="imagePreview">
+      <div>{{ uploadPercent | async }}%</div>
+      <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-only block (tap)="presentarCamara()">
+            <ion-icon name="camera"></ion-icon>
+            Cámara
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only block (tap)="presentarGaleria()">
+            <ion-icon name="image"></ion-icon>
+            Galería
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <br>
+
+    <input type="file" (change)="uploadFile($event)" />
+    <div>{{ uploadPercent | async }}%</div>
+    <!-- <a [href]="downloadURL | async">URL: {{ downloadURL | async }}</a> -->
+
+    <br>
+
+    <button ion-button block color="secondary" (tap)="agregarPlatillo()">Añadir Platillo</button>
+
+  </ion-list>
+
+</ion-content>
